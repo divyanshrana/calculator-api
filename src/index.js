@@ -24,6 +24,7 @@ app.get("/", (req, res) => {
 app.post("/add", (req, res) => {
   let num1 = req.body.num1;
   let num2 = req.body.num2;
+  let num2 = req.body.num2;
   if (typeof num1 === "string" || typeof num2 === "string") {
     return res.status(400).json({ message: "invalid data types" });
   }
