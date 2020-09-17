@@ -25,10 +25,11 @@ app.post("/add", (req, res) => {
   if (typeof num1 === "string" || typeof num2 === "string") {
     return res.status(200).json({ message: "Invalid data types" });
   }
-  if (num1 >= 1000000 || num2 >= 1000000) {
+  let sum = num1 + num2;
+
+  if (num1 >= 1000000 || num2 >= 1000000 || sum >= 1000000) {
     return res.status(420).json({ message: "Overflow" });
   }
-  let sum = num1 + num2;
   res.status(200).json({ message: "the sum of given two numbers", sum: sum });
 });
 
@@ -53,10 +54,11 @@ app.post("/multiply", (req, res) => {
   if (typeof num1 === "string" || typeof num2 === "string") {
     return res.status(200).json({ message: "Invalid data types" });
   }
-  if (num1 >= 1000000 || num2 >= 1000000) {
+  let mul = num1 * num2;
+  if (num1 >= 1000000 || num2 >= 1000000 || mul > 1000000) {
     return res.status(200).json({ message: "Overflow" });
   }
-  let mul = num1 * num2;
+
   res
     .status(200)
     .json({ message: "The product of given numbers", result: mul });
