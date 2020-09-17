@@ -4,8 +4,6 @@ const bodyParser = require("body-parser");
 const { Router } = require("express");
 const port = process.env.PORT || 3000;
 app.use(express.urlencoded());
-var cors = require("cors");
-app.use(cors());
 
 // Parse JSON bodies (as sent by API clients)
 app.use(express.json());
@@ -56,7 +54,7 @@ app.post("/multiply", (req, res) => {
     return res.status(200).json({ message: "Invalid data types" });
   }
   if (num1 >= 1000000 || num2 >= 1000000) {
-    return res.status(420).json({ message: "Overflow" });
+    return res.status(200).json({ message: "Overflow" });
   }
   let mul = num1 * num2;
   res
@@ -71,7 +69,9 @@ app.post("/divide", (req, res) => {
     return res.status(200).json({ message: "Cannot divide by zero" });
   }
   let div = num1 / num2;
-  res.status(200).json({ message: "The division of given numbers", sum: div });
+  res
+    .status(200)
+    .json({ message: "The division of given numbers", result: div });
 });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
