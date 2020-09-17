@@ -28,7 +28,7 @@ app.post("/add", (req, res) => {
   let sum = num1 + num2;
 
   if (num1 >= 1000000 || num2 >= 1000000 || sum >= 1000000) {
-    return res.status(420).json({ message: "Overflow" });
+    return res.status(200).json({ message: "Overflow" });
   }
   res.status(200).json({ message: "the sum of given two numbers", sum: sum });
 });
